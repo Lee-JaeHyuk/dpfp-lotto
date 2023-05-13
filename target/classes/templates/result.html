@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fortune Lotto</title>
+
+</head>
+<body>
+<h1>오늘의 운세로 로또를 맞추자</h1>
+<p>이름: 이랜드이노플 데브 그라운드</span></p>
+<p>생년월일: <span th:text="${birthDate}"></span></p>
+<!--<p>운세: <span th:text="${fortune}"></span></p> -->
+<a href="/">다시하기</a>
+
+<form action="/generate" method="post" th:fragment="lottoForm" >
+    <label for="count">몇장 드릴까:</label>
+    <input type="number" id="count" name="count" min="1" max="10">
+    <input type="hidden" th:name="fortune" th:value="${fortune}" />
+    <button type="submit">생성</button>
+</form>
+
+
+<div th:if="${not #lists.isEmpty(numbers)}">
+    <h2>로또 번호</h2>
+    <h1>사용자님의 운세는 <span th:text="${fortune}"> </span></h1>
+    <table>
+        <tr th:each="numberList : ${numbers}">
+            <td th:each="number : ${numberList}" th:text="${number}" th:style="'padding-right: 10px'"></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

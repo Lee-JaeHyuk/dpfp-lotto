@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fortune Lotto</title>
+</head>
+<body>
+<h1>명예의 전당 (내가 올라갈수 있길..)</h1>
+<div>
+    <p>최근당첨 번호: <span th:text="${numbers}"></span></p>
+    <p>부러운 사사람: <span th:text="${winners}"></span></p>
+</div>
+<h1>오늘의 운세를 통해 로또를 맞추자</h1>
+<form action="/fortune" method="post">
+    <label for="birthDate">생년월일:</label>
+    <input type="date" id="birthDate" name="birthDate" required>
+    <button type="submit">운세 확인</button>
+</form>
+
+</body>
+</html>
